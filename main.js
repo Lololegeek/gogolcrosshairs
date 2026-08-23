@@ -203,6 +203,7 @@ function closeOverlayWindow() {
 let lastUsedCrosshair = null;
 let isOverlayVisible = false;
 let f2Registered = false;
+let f2FallbackRegistered = false;
 
 function toggleOverlay() {
   if (isOverlayVisible) {
@@ -226,7 +227,10 @@ app.whenReady().then(() => {
   
   // Raccourci global F2 pour toggle le crosshair.
   f2Registered = globalShortcut.register('F2', toggleOverlay);
-  if (!f2Registered) console.warn('[main] Le raccourci global F2 est déjà utilisé par une autre application.');
+  if (!f2Registered) {
+    f2FallbackRegistered = globalShortcut.register('CommandOrControl+Shift+F2', toggleOverlay);
+    console.warn('[main] F2 est déjà utilisé. Raccourci global de secours:', f2FallbackRegistered ? 'Ctrl+Shift+F2' : 'indisponible');
+  }
   
   // Configurer l'auto-updater
   autoUpdater.autoDownload = true;
@@ -481,4 +485,4 @@ ipcMain.handle('install-update', () => {
 
 ipcMain.handle('toggle-overlay', () => toggleOverlay());
 
-ipcMain.handle('global-shortcut-status', () => ({ f2: f2Registered }));
+ipcMain.handle('global-shortcut-status', () => ({ f2: f2Registered, fallback: f2FallbackRegistered }));
