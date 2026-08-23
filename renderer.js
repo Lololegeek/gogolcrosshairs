@@ -72,6 +72,9 @@ function selectCrosshair(crosshair, { persist = true } = {}) {
   if (!crosshair) return;
   currentCrosshair = crosshair;
   appState.selectedId = crosshair.id;
+  // Le raccourci F2 doit toujours reprendre le crosshair actuellement sélectionné,
+  // notamment lorsqu’il s’agit d’un crosshair basé sur une image.
+  appState.lastUsedId = crosshair.id;
   document.getElementById('name').value = crosshair.name || '';
   document.getElementById('size').value = crosshair.size ?? 30;
   document.getElementById('width').value = crosshair.width ?? crosshair.size ?? 30;

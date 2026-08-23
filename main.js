@@ -222,7 +222,7 @@ function toggleOverlay() {
 
 app.whenReady().then(() => {
   loadPersistedState();
-  lastUsedCrosshair = findCrosshair(persistedState.lastUsedId) || findCrosshair(persistedState.selectedId) || null;
+  lastUsedCrosshair = findCrosshair(persistedState.selectedId) || findCrosshair(persistedState.lastUsedId) || null;
   createMainWindow();
   
   // Raccourci global F2 pour toggle le crosshair.
