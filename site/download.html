@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Télécharger - GogolCrosshairs</title>
+  <link rel="icon" type="image/png" href="/images/favicon-16x16.png">
+  <style>
+    body {
+      background: #0a001f;
+      color: #c77dff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+    }
+    nav {
+      background: #2d0066;
+      padding: 10px;
+    }
+    nav a {
+      color: #c77dff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5em;
+      text-shadow: 0 0 10px #c77dff;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 30px;
+      background: #c77dff;
+      color: #0a001f;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #e0aaff;
+    }
+    .btn-disabled {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 30px;
+      background: #444;
+      color: #aaa;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: not-allowed;
+    }
+    .status {
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+    .active {
+      color: #7fff7f;
+    }
+    .inactive {
+      color: #ff7f7f;
+    }
+    .btn-placeholder {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 30px;
+      background: #444;
+      color: #aaa;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: not-allowed;
+      text-decoration: none;
+    }
+    .status-bar {
+      background: #1a0033;
+      padding: 15px;
+      border-top: 2px solid #c77dff;
+      margin-top: 40px;
+    }
+    .status-info {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .status-item {
+      text-align: center;
+    }
+    .status-version {
+      font-weight: bold;
+      color: #e0aaff;
+      font-size: 1.1em;
+    }
+    .status-label {
+      color: #a77dff;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="download.html">Télécharger</a>
+    <a href="credit.html">Crédits</a>
+    <a href="versions.html">Versions</a>
+  </nav>
+
+  <h1>Téléchargement</h1>
+  <p>Choisissez votre plateforme :</p>
+
+  <!-- Windows -->
+  <div>
+    <a href="gogolcrosshairs setup 1.1.0.exe" download class="btn">Windows (72 Mo)</a>
+    <div class="status active">✅ Disponible</div>
+  </div>
+
+  <!-- MacOS -->
+  <div>
+    <span class="btn-placeholder">Mac OS</span>
+    <div class="status inactive">❌ Bientôt disponible</div>
+  </div>
+
+  <hr style="margin: 40px 0; border: 1px solid #c77dff;">
+
+  <!-- Anciennes versions -->
+  <h2>Anciennes versions</h2>
+  <p>Besoin d'une version antérieure ?</p>
+  <a href="versions.html" class="btn">📥 Voir toutes les versions</a>
+
+  <div class="status-bar">
+    <div class="status-info">
+      <div class="status-item">
+        <div class="status-version">v1.1.0</div>
+        <div class="status-label">Dernière version</div>
+      </div>
+      <div class="status-item">
+        <div class="status-version">✅ Windows</div>
+        <div class="status-label">Disponible</div>
+      </div>
+      <div class="status-item">
+        <div class="status-version">⏳ Mac OS</div>
+        <div class="status-label">Bientôt</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

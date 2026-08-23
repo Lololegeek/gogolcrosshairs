@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GogolCrosshairs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="titlebar">
+    <div class="titlebar-drag">
+      <div class="app-logo">🎯</div>
+      <span class="app-title">GogolCrosshairs</span>
+      <span class="version-tag" id="currentVersion">v1.4.0</span>
+      <button class="update-btn" id="updateBtn" style="display: none;" title="Mise à jour disponible">
+        🆕 Update
+      </button>
+    </div>
+    <div class="titlebar-buttons">
+      <button class="titlebar-btn check-update" onclick="showUpdateModal()" title="Vérifier les mises à jour">⟳</button>
+      <button class="titlebar-btn minimize" onclick="minimizeWindow()">─</button>
+      <button class="titlebar-btn maximize" onclick="maximizeWindow()">□</button>
+      <button class="titlebar-btn close" onclick="closeWindow()">✕</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h2>Mes Crosshairs</h2>
+        <button class="btn btn-icon" onclick="createNew()" title="Nouveau crosshair">
+          <span>+</span>
+        </button>
+      </div>
+      
+      <div class="crosshair-list" id="crosshairList"></div>
+      
+      <div class="sidebar-footer">
+        <button class="btn btn-secondary" onclick="importFromClipboard()">
+          📋 Importer JSON
+        </button>
+        <p class="hint">Presse-papier</p>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="editor-container">
+        <div class="editor-header">
+          <h1 id="editorTitle">Crosshair</h1>
+          <div class="editor-actions">
+            <button class="btn btn-success" onclick="useCrosshair()">
+              <span id="overlayBtnText">▶ Activer</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="info-banner">
+          <span>💡 Utilise le mode <strong>Plein écran fenêtré</strong> dans tes jeux pour que le crosshair s'affiche</span>
+        </div>
+
+        <div class="editor-grid">
+          <div class="preview-section">
+            <div class="preview-card">
+              <h3>Aperçu</h3>
+              <div class="preview" id="preview">
+                <canvas id="previewCanvas" width="400" height="400"></canvas>
+              </div>
+              <div class="preview-actions">
+                <button class="btn btn-small" onclick="exportAsPNG()">💾 Export PNG</button>
+                <button class="btn btn-small" onclick="exportAsJSON()">📤 Export JSON</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls-section">
+            <div class="controls-card">
+              <h3>Paramètres</h3>
+              
+              <div class="form-group">
+                <label>Nom du crosshair</label>
+                <input type="text" id="name" placeholder="Ex: Mon crosshair" oninput="updateName()">
+              </div>
+
+              <div class="presets-section">
+                <label>Présets</label>
+                <div class="presets-grid">
+                  <button class="btn btn-preset" onclick="loadPreset('small')">📍 Petit</button>
+                  <button class="btn btn-preset" onclick="loadPreset('medium')">📍 Moyen</button>
+                  <button class="btn btn-preset" onclick="loadPreset('large')">📍 Grand</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Type de crosshair</label>
+                <div class="type-grid">
+                  <button class="type-btn active" data-type="cross" onclick="selectType('cross')">+</button>
+                  <button class="type-btn" data-type="dot" onclick="selectType('dot')">●</button>
+                  <button class="type-btn" data-type="circle" onclick="selectType('circle')">○</button>
+                  <button class="type-btn" data-type="square" onclick="selectType('square')">□</button>
+                  <button class="type-btn" data-type="t" onclick="selectType('t')">T</button>
+                  <button class="type-btn" data-type="x" onclick="selectType('x')">✕</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Couleur principale</label>
+                <div class="color-picker">
+                  <input type="color" id="color" value="#00ff00" onchange="updatePreview()">
+                  <input type="text" id="colorHex" value="#00ff00" oninput="updateColorFromHex()">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Taille: <span id="sizeValue">30</span>px</label>
+                <input type="range" id="size" min="5" max="150" value="30" oninput="updateSize()">
+              </div>
+
+              <div class="form-group">
+                <label>Largeur horizontale: <span id="widthValue">30</span>px</label>
+                <input type="range" id="width" min="5" max="150" value="30" oninput="updateWidth()">
+              </div>
+
+              <div class="form-group">
+                <label>Hauteur verticale: <span id="heightValue">30</span>px</label>
+                <input type="range" id="height" min="5" max="150" value="30" oninput="updateHeight()">
+              </div>
+
+              <div class="form-group">
+                <label>Épaisseur: <span id="thicknessValue">3</span>px</label>
+                <input type="range" id="thickness" min="1" max="15" value="3" oninput="updateThickness()">
+              </div>
+
+              <div class="form-group">
+                <label>Espace au centre: <span id="gapValue">5</span>px</label>
+                <input type="range" id="gap" min="0" max="50" value="5" oninput="updateGap()">
+              </div>
+
+              <div class="form-group">
+                <label>Opacité: <span id="opacityValue">100</span>%</label>
+                <input type="range" id="opacity" min="10" max="100" value="100" oninput="updateOpacity()">
+              </div>
+
+              <div class="form-group">
+                <button class="btn btn-primary full-width" onclick="selectImageFile()">
+                  📁 Choisir une image
+                </button>
+                <p class="hint">PNG, JPG, GIF supportés</p>
+              </div>
+
+              <div class="form-group" id="imageControls" style="display: none;">
+                <label>Taille de l'image: <span id="imageSizeValue">50</span>px</label>
+                <input type="range" id="imageSize" min="10" max="200" value="50" oninput="updateImageSize()">
+                
+                <label>Opacité de l'image: <span id="imageOpacityValue">100</span>%</label>
+                <input type="range" id="imageOpacity" min="10" max="100" value="100" oninput="updateImageOpacity()">
+                
+                <button class="btn btn-danger full-width" onclick="removeImage()">
+                  🗑️ Supprimer l'image
+                </button>
+              </div>
+
+              <div class="form-group">
+                <label>Raccourcis clavier</label>
+                <div class="hotkey-info">
+                  <div class="hotkey-item">
+                    <kbd>F2</kbd>
+                    <span>Activer/Désactiver le crosshair</span>
+                  </div>
+                  <div class="hotkey-item">
+                    <kbd>F3</kbd>
+                    <span>Mode Resource Hog</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" onclick="saveCrosshair()">💾 Sauvegarder</button>
+                <button class="btn btn-danger" onclick="deleteCrosshair()">🗑️ Supprimer</button>
+                <span class="save-status" id="saveStatus" aria-live="polite">Sauvegarde automatique activée</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

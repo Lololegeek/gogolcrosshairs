@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Anciennes versions - GogolCrosshairs</title>
+  <link rel="icon" type="image/png" href="/images/favicon-16x16.png">
+  <style>
+    body {
+      background: #0a001f;
+      color: #c77dff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    nav {
+      background: #2d0066;
+      padding: 10px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+    }
+    nav a {
+      color: #c77dff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #e0aaff;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      text-shadow: 0 0 10px #c77dff;
+      margin-bottom: 10px;
+    }
+    .intro {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #a77dff;
+    }
+    .versions-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .version-card {
+      background: #1a0033;
+      border: 2px solid #c77dff;
+      border-radius: 8px;
+      padding: 25px;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+    .version-card:hover {
+      border-color: #e0aaff;
+      box-shadow: 0 0 15px rgba(199, 125, 255, 0.3);
+    }
+    .version-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .version-title {
+      font-size: 1.8em;
+      font-weight: bold;
+      margin: 0;
+    }
+    .version-tag {
+      background: #c77dff;
+      color: #0a001f;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: bold;
+    }
+    .version-tag.latest {
+      background: #7fff7f;
+    }
+    .version-date {
+      color: #a77dff;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+    }
+    .version-description {
+      color: #b8a7ff;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    .version-downloads {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #c77dff;
+      color: #0a001f;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+      font-size: 0.9em;
+    }
+    .btn:hover {
+      background: #e0aaff;
+    }
+    .btn-disabled {
+      background: #444;
+      color: #aaa;
+      cursor: not-allowed;
+      text-decoration: none;
+    }
+    .btn-disabled:hover {
+      background: #444;
+    }
+    .platform-badge {
+      display: inline-block;
+      background: rgba(199, 125, 255, 0.2);
+      color: #c77dff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      margin-left: 8px;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #c77dff;
+      margin: 30px 0;
+      opacity: 0.3;
+    }
+    .status-bar {
+      background: #1a0033;
+      padding: 15px;
+      border-top: 2px solid #c77dff;
+      margin-top: 40px;
+    }
+    .status-info {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .status-item {
+      text-align: center;
+    }
+    .status-version {
+      font-weight: bold;
+      color: #e0aaff;
+      font-size: 1.1em;
+    }
+    .status-label {
+      color: #a77dff;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="download.html">Télécharger</a>
+    <a href="credit.html">Crédits</a>
+    <a href="versions.html">Versions</a>
+  </nav>
+
+  <h1>🕐 Historique des versions</h1>
+  <p class="intro">Trouvez les anciennes versions de GogolCrosshairs</p>
+
+  <div class="versions-container">
+    
+    <!-- Version 2.0.0 -->
+    <div class="version-card">
+      <div class="version-header">
+        <h2 class="version-title">v1.1.0</h2>
+        <span class="version-tag latest">Dernière</span>
+      </div>
+      <p class="version-date">📅 18 novembre 2025</p>
+      <p class="version-description">
+        <strong>Principales améliorations :</strong><br>
+        ✨ Nouveau design modernisé<br>
+        🎯 Système de présets (Petit, Moyen, Grand)<br>
+        🖼️ Support des images custom<br>
+        💾 Stockage permanent des crosshairs<br>
+        📌 Icône système (tray) avec menu contextuel<br>
+        🎨 Suppression des paramètres inutiles (contour, ombre)<br>
+        📝 Nommage personnalisé des crosshairs
+      </p>
+      <div class="version-downloads">
+        <a href="GogolCrosshairs Setup 1.1.0.exe" download class="btn">
+          Windows (72 Mo)
+        </a>
+        <a href="#" class="btn btn-disabled">
+          Mac OS
+        </a>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Version 1.0.0 -->
+    <div class="version-card">
+      <div class="version-header">
+        <h2 class="version-title">v1.0.0</h2>
+      </div>
+      <p class="version-date">📅 Première version</p>
+      <p class="version-description">
+        <strong>Fonctionnalités :</strong><br>
+        🎯 Éditeur de crosshair complet<br>
+        🎨 6 formes de crosshair (Cross, Dot, Circle, Square, T, X)<br>
+        🌈 Personnalisation des couleurs<br>
+        📊 Ajustement fin des paramètres<br>
+        💾 Export en PNG et JSON<br>
+        📋 Import/Export via presse-papier
+      </p>
+      <div class="version-downloads">
+        <a href="old-versions/GogolCrosshairsbyLoloLeDev-Setup-1.0.0.exe" download class="btn">
+          Windows (72 Mo)
+        </a>
+        <a href="#" class="btn btn-disabled">
+          Mac OS
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="status-bar">
+    <div class="status-info">
+      <div class="status-item">
+        <div class="status-version">v1.1.0</div>
+        <div class="status-label">Dernière version</div>
+      </div>
+      <div class="status-item">
+        <div class="status-version">✅ Windows</div>
+        <div class="status-label">Disponible</div>
+      </div>
+      <div class="status-item">
+        <div class="status-version">⏳ Mac OS</div>
+        <div class="status-label">Bientôt</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
