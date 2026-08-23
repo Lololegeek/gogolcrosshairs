@@ -3,7 +3,7 @@
 ; Non-commercial use only
 
 #define MyAppName "GogolCrosshairs"
-#define MyAppVersion "1.4.0"
+#define MyAppVersion "1.5.0"
 #define MyAppPublisher "LoloLeDev"
 #define MyAppURL "https://www.gogolcrosshairs.netlify.app"
 #define MyAppExeName "GogolCrosshairs.exe"
